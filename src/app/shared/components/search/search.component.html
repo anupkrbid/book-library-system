@@ -1,0 +1,11 @@
+<!-- Make sure the form has the autocomplete function switched off -->
+<form autocomplete="off" #form="ngForm" (submit)="onFilterBooks(form)">
+  <div class="autocomplete">
+    <input id="text-search" aria-label="search text"
+      name="search" type="search" placeholder="Search text..."
+      [appAutoComplete]="searchList" [ngModel]="defaultSearchText" />
+  </div>
+  <button type="submit">
+    <img src="../../../../assets/search.svg" width="15" height="15" alt="search book">
+  </button>
+</form>

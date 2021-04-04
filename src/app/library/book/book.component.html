@@ -1,0 +1,35 @@
+<!-- <img class="card__image" src="https://fakeimg.pl/400x300/009578/fff?text=Book" alt="">
+<div class="card__content">
+  <h2>{{ book.name }}</h2>
+  <p>by - <strong> {{ book.author }} </strong></p>
+  <p>
+    {{ book.description }}.
+  </p>
+</div>
+<div class="card__info">
+  <div>
+    Count: {{ book.count }}
+  </div>
+  <div>
+    <a href="javascript:void(0)" class="card__link" [routerLink]="['/library', book.id, 'edit']">Edit</a>
+  </div><div>
+    <a href="javascript:void(0)" class="card__link" (click)="onDeleteBook(book)">Delete</a>
+  </div>
+</div> -->
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"> {{ book.name }} </h5>
+    <p class="card-text"> {{ book.description }} </p>
+    <p class="card-text author"><small class="text-muted">Author: <strong> {{ book.author }} </strong></small></p>
+  </div>
+  <div class="card-info">
+    <div>
+      Count: {{ book.count }}
+    </div>
+    <div class="card-actions">
+      <a href="javascript:void(0)" class="card-link edit" [routerLink]="['/library', book.id, 'edit']">Edit</a>
+      <a href="javascript:void(0)" class="card-link delete" (click)="onDeleteBook(book)">Delete</a>
+    </div>
+  </div>
+</div>

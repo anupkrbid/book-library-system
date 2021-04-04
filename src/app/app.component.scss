@@ -1,0 +1,36 @@
+main {
+  max-width: 70.5em;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 70.5em;
+  margin: 0 auto;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem 1rem;
+  background-color: #eeeeee !important;
+}
+
+.navbar-brand {
+  display: inline-block;
+  padding-top: .3125rem;
+  padding-bottom: .3125rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+  position: cursor;
+  color: rgba(0,0,0,.9);
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
+}

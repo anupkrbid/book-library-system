@@ -1,0 +1,24 @@
+
+<div class="container">
+  <div class="list-controls">
+    <app-search [searchList]="bookNames" [defaultSearchText]="searchText" (searchTextChanged)="searchText = $event"></app-search>
+
+    <button routerLink="/library/add" type="button">
+      <img src="../../assets/add.svg" width="15" height="15" alt="add book">
+    </button>
+  </div>
+
+  <hr>
+
+  <div *ngIf="(books | filterBy: searchText).length > 0; else alert">
+    <app-book [book]="book" *ngFor="let book of (books | filterBy: searchText)"></app-book>
+  </div>
+
+  <ng-template #alert>
+    <div class="alert" role="alert">
+      Library Empty
+    </div>
+  </ng-template>
+
+</div>
+

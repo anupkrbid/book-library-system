@@ -1,0 +1,40 @@
+<div class="container">
+  <form [formGroup]="bookForm" (ngSubmit)="onBookFormSubmit()">
+    <div class="input-wrapper">
+      <label for="author">Author</label>
+      <input type="text" id="author" name="author" formControlName="author" placeholder="Author Name..">
+      <span *ngIf="(bookForm.get('author').invalid && bookForm.get('author').touched) || (bookForm.get('author').invalid && bookForm.get('author').dirty)">
+        <span class="error" *ngIf="bookForm.get('author').errors && bookForm.get('author').hasError('required')">Author name is required.</span>
+      </span>
+    </div>
+
+    <div class="input-wrapper">
+      <label for="name">Book Name</label>
+      <input type="text" id="name" name="name" formControlName="name" placeholder="Book name..">
+      <span *ngIf="(bookForm.get('name').invalid && bookForm.get('name').touched) || (bookForm.get('name').invalid && bookForm.get('name').dirty)">
+        <span class="error" *ngIf="bookForm.get('name').errors && bookForm.get('name').hasError('required')">Book name is required.</span>
+      </span>
+    </div>
+
+    <div class="input-wrapper">
+      <label for="description">Description</label>
+      <textarea id="description" name="description" formControlName="description" placeholder="Book description.." style="height:200px"></textarea>
+      <span *ngIf="(bookForm.get('description').invalid && bookForm.get('description').touched) || (bookForm.get('description').invalid && bookForm.get('description').dirty)">
+        <span class="error" *ngIf="bookForm.get('description').errors && bookForm.get('description').hasError('required')">Book description  is required.</span>
+      </span>
+    </div>
+
+    <div class="input-wrapper">
+      <label for="count">Count</label>
+      <input type="number" step="1" id="count" name="count" formControlName="count" placeholder="Book count..">
+      <span *ngIf="(bookForm.get('count').invalid && bookForm.get('count').touched) || (bookForm.get('count').invalid && bookForm.get('count').dirty)">
+        <span class="error" *ngIf="bookForm.get('count').errors && bookForm.get('count').hasError('required')">Book count is required.</span> <br>
+        <span class="error" *ngIf="bookForm.get('count').errors && bookForm.get('count').hasError('min')">Min book count should be more then zero.</span> <br>
+        <span class="error" *ngIf="bookForm.get('count').errors && bookForm.get('count').hasError('notWholeNo')">Book count should be a whole number.</span>
+      </span>
+    </div>
+
+    <button type="button" (click)="onResetForm()">RESET</button>
+    <button type="submit" [disabled]="bookForm.invalid">SUBMIT</button>
+  </form>
+</div>
