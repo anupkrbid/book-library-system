@@ -1,4 +1,4 @@
-.card {
+.book {
   position: relative;
   margin: 0.5rem 0;
   display: flex;
@@ -10,7 +10,7 @@
   border: 1px solid rgba(0,0,0,.125);
   border-radius: .25rem;
 
-  .card-body {
+  .book-body {
     flex: 1 1 auto;
     padding: 1.25rem;
 
@@ -18,17 +18,17 @@
       margin: 0;
     }
 
-    .card-title {
+    .book-title {
       margin-bottom: .75rem;
       font-size: 1.25rem
     }
 
-    .card-text.author {
+    .book-text.author {
       margin: 0;
     }
   }
 
-  .card-info {
+  .book-info {
     padding: 15px;
     display: flex;
     justify-content: space-between;
@@ -42,21 +42,21 @@
       margin-right: 8px;
     }
 
-    .card-link.edit {
+    .book-link.edit {
       color: #64968c;
       text-decoration: none;
     }
 
-    .card-link.delete {
+    .book-link.delete {
       color: #e63508;
       text-decoration: none;
     }
 
-    .card-link:hover {
+    .book-link:hover {
       text-decoration: underline;
     }
 
-    .card-actions {
+    .book-actions {
       display: flex;
       gap: .5rem;
     }

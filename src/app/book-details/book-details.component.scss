@@ -15,16 +15,15 @@ input[type=text], input[type=number], textarea {
   resize: vertical;
 }
 
-button[type=button] {
-  background-color: blue;
-  color: white;
+.reset {
+  background-color: #eeeeee;
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
 }
 
-button[type=submit] {
-  background-color: #4CAF50;
+.submit {
+  background-color:dodgerblue;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -32,13 +31,10 @@ button[type=submit] {
   margin-left: 1em;
 }
 
-button[type=submit]:disabled {
+.submit:disabled {
   cursor: not-allowed;
 }
 
-button[type=submit]:hover {
-  background-color: #45a049;
-}
 
 input.ng-invalid.ng-touched, input.ng-invalid.ng-dirty, textarea.ng-invalid.ng-touched, textarea.ng-invalid.ng-dirty {
   border: 1px solid red;

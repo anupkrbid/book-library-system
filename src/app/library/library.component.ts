@@ -13,6 +13,7 @@ import * as LibraryActions from '../store/library/library.actions';
   styleUrls: ['./library.component.scss']
 })
 export class LibraryComponent implements OnInit {
+  page = 1;
   searchText = '';
   books: Book[] = [];
   bookNames: string[] = [];

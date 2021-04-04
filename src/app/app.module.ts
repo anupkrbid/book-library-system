@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
 import { NgModule } from '@angular/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
@@ -24,6 +25,7 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     EffectsModule.forRoot([LibraryEffects]),
+    NgxPaginationModule,
     StoreModule.forRoot(appReducers),
     AppRoutingModule,
     HttpClientModule,

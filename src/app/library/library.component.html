@@ -10,8 +10,9 @@
 
   <hr>
 
-  <div *ngIf="(books | filterBy: searchText).length > 0; else alert">
-    <app-book [book]="book" *ngFor="let book of (books | filterBy: searchText)"></app-book>
+  <div class="book-list" *ngIf="(books | filterBy: searchText).length > 0; else alert">
+    <app-book [book]="book" *ngFor="let book of (books | filterBy: searchText) | paginate: { itemsPerPage: 2, currentPage: page }"></app-book>
+    <pagination-controls class="book-pagination" (pageChange)="page = $event"></pagination-controls>
   </div>
 
   <ng-template #alert>

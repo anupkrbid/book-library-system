@@ -28,3 +28,17 @@ button {
   display: flex;
   justify-content: space-between;
 }
+
+.book-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book-pagination {
+  ::ng-deep {
+    .ngx-pagination {
+      padding: 0;
+    }
+  }
+}
