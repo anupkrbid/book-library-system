@@ -1,9 +1,10 @@
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, mergeMap, switchMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
+import * as AlertActions from '../alert/alert.actions';
 import * as LibraryActions from './library.actions';
 import { environment } from '../../../environments/environment';
 
@@ -19,10 +20,10 @@ export class LibraryEffects {
         mergeMap((res: any) => {
           if (res.status) {
             return [
-              // {
-              //   type: LibraryActions.ALERT_SHOW,
-              //   payload: {message: res.message, type: 'success'}
-              // },
+              {
+                type: AlertActions.ALERT_SHOW,
+                payload: { message: res.message, type: 'success' }
+              },
               {
                 type: LibraryActions.ADD_BOOK_SUCCESS,
                 payload: res.result
@@ -30,10 +31,10 @@ export class LibraryEffects {
             ];
           } else {
             return [
-              // {
-              //   type: LibraryActions.ALERT_SHOW,
-              //   payload: {message: res.message, type: 'danger'}
-              // },
+              {
+                type: AlertActions.ALERT_SHOW,
+                payload: { message: res.message, type: 'danger' }
+              },
               {
                 type: LibraryActions.ADD_BOOK_FAILED
               }
@@ -42,12 +43,9 @@ export class LibraryEffects {
         }),
         catchError((err: HttpErrorResponse) => {
           return of({
-            type: LibraryActions.ADD_BOOK_FAILED
+            type: AlertActions.ALERT_SHOW,
+            payload: { message: err.error.error, type: 'danger' }
           });
-          // return of({
-          //   type: AlertActions.ALERT_SHOW,
-          //   payload: { message: err.message, type: 'danger' }
-          // })
         })
       );
     })
@@ -59,38 +57,24 @@ export class LibraryEffects {
     switchMap((action: LibraryActions.GetBookAttempt) => {
       const apiUrl = `${environment.apiBaseUrl}/api/v1/books/${action.payload}`;
       return this.http.get(apiUrl).pipe(
-        mergeMap((res: any) => {
+        map((res: any) => {
           if (res.status) {
-            return [
-              // {
-              //   type: LibraryActions.ALERT_SHOW,
-              //   payload: {message: res.message, type: 'success'}
-              // },
-              {
-                type: LibraryActions.GET_BOOK_SUCCESS,
-                payload: res.result
-              }
-            ];
+            return {
+              type: LibraryActions.GET_BOOK_SUCCESS,
+              payload: res.result
+            };
           } else {
-            return [
-              // {
-              //   type: LibraryActions.ALERT_SHOW,
-              //   payload: {message: res.message, type: 'danger'}
-              // },
-              {
-                type: LibraryActions.GET_BOOK_FAILED
-              }
-            ];
+            return {
+              type: AlertActions.ALERT_SHOW,
+              payload: { message: res.message, type: 'danger' }
+            }
           }
         }),
         catchError((err: HttpErrorResponse) => {
           return of({
-            type: LibraryActions.GET_BOOK_FAILED
+            type: AlertActions.ALERT_SHOW,
+            payload: { message: err.error.error, type: 'danger' }
           });
-          // return of({
-          //   type: AlertActions.ALERT_SHOW,
-          //   payload: { message: err.message, type: 'danger' }
-          // })
         })
       );
     })
@@ -102,38 +86,24 @@ export class LibraryEffects {
     switchMap((action: LibraryActions.GetBooksAttempt) => {
       const apiUrl = `${environment.apiBaseUrl}/api/v1/books`;
       return this.http.get(apiUrl).pipe(
-        mergeMap((res: any) => {
+        map((res: any) => {
           if (res.status) {
-            return [
-              // {
-              //   type: LibraryActions.ALERT_SHOW,
-              //   payload: {message: res.message, type: 'success'}
-              // },
-              {
-                type: LibraryActions.GET_BOOKS_SUCCESS,
-                payload: res.result
-              }
-            ];
+            return {
+              type: LibraryActions.GET_BOOKS_SUCCESS,
+              payload: res.result
+            };
           } else {
-            return [
-              // {
-              //   type: LibraryActions.ALERT_SHOW,
-              //   payload: {message: res.message, type: 'danger'}
-              // },
-              {
-                type: LibraryActions.GET_BOOKS_FAILED
-              }
-            ];
+            return {
+              type: AlertActions.ALERT_SHOW,
+              payload: { message: res.message, type: 'danger' }
+            };
           }
         }),
         catchError((err: HttpErrorResponse) => {
           return of({
-            type: LibraryActions.GET_BOOKS_FAILED
+            type: AlertActions.ALERT_SHOW,
+            payload: { message: err.error.error, type: 'danger' }
           });
-          // return of({
-          //   type: AlertActions.ALERT_SHOW,
-          //   payload: { message: err.message, type: 'danger' }
-          // })
         })
       );
     })
@@ -148,10 +118,10 @@ export class LibraryEffects {
         mergeMap((res: any) => {
           if (res.status) {
             return [
-              // {
-              //   type: LibraryActions.ALERT_SHOW,
-              //   payload: {message: res.message, type: 'success'}
-              // },
+              {
+                type: AlertActions.ALERT_SHOW,
+                payload: { message: res.message, type: 'success' }
+              },
               {
                 type: LibraryActions.EDIT_BOOK_SUCCESS,
                 payload: res.result
@@ -159,10 +129,10 @@ export class LibraryEffects {
             ];
           } else {
             return [
-              // {
-              //   type: LibraryActions.ALERT_SHOW,
-              //   payload: {message: res.message, type: 'danger'}
-              // },
+              {
+                type: AlertActions.ALERT_SHOW,
+                payload: { message: res.message, type: 'danger' }
+              },
               {
                 type: LibraryActions.EDIT_BOOK_FAILED
               }
@@ -171,12 +141,9 @@ export class LibraryEffects {
         }),
         catchError((err: HttpErrorResponse) => {
           return of({
-            type: LibraryActions.EDIT_BOOK_FAILED
+            type: AlertActions.ALERT_SHOW,
+            payload: { message: err.error.error, type: 'danger' }
           });
-          // return of({
-          //   type: AlertActions.ALERT_SHOW,
-          //   payload: { message: err.message, type: 'danger' }
-          // })
         })
       );
     })
@@ -191,10 +158,10 @@ export class LibraryEffects {
         mergeMap((res: any) => {
           if (res.status) {
             return [
-              // {
-              //   type: LibraryActions.ALERT_SHOW,
-              //   payload: {message: res.message, type: 'success'}
-              // },
+              {
+                type: AlertActions.ALERT_SHOW,
+                payload: {message: res.message, type: 'success'}
+              },
               {
                 type: LibraryActions.DELETE_BOOK_SUCCESS,
                 payload: res.result
@@ -202,10 +169,10 @@ export class LibraryEffects {
             ];
           } else {
             return [
-              // {
-              //   type: LibraryActions.ALERT_SHOW,
-              //   payload: {message: res.message, type: 'danger'}
-              // },
+              {
+                type: AlertActions.ALERT_SHOW,
+                payload: { message: res.message, type: 'danger' }
+              },
               {
                 type: LibraryActions.DELETE_BOOK_FAILED
               }
@@ -214,12 +181,9 @@ export class LibraryEffects {
         }),
         catchError((err: HttpErrorResponse) => {
           return of({
-            type: LibraryActions.DELETE_BOOK_FAILED
+            type: AlertActions.ALERT_SHOW,
+            payload: { message: err.error.error, type: 'danger' }
           });
-          // return of({
-          //   type: AlertActions.ALERT_SHOW,
-          //   payload: { message: err.message, type: 'danger' }
-          // })
         })
       );
     })

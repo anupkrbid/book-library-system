@@ -1,0 +1,21 @@
+.alert {
+  color: #fff;
+  padding: 18px 12px;
+  overflow: hidden;
+}
+.alert strong {
+  width: 90%;
+  float: left;
+}
+
+i {
+  cursor: pointer;
+}
+
+:host {
+  z-index: 1001;
+  position: fixed;
+  width: 35%;
+  right: 5px;
+  top: 45px;
+}

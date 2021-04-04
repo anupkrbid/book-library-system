@@ -32,7 +32,11 @@ button {
 .book-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
+}
+
+.book-pagination {
+  align-self: center;
 }
 
 .book-pagination {

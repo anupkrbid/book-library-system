@@ -9,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { appReducers } from './store';
 import { AppRoutingModule } from './app-routing.module';
+import { AlertComponent } from './alert/alert.component';
 import { BookComponent } from './library/book/book.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { LibraryComponent } from './library/library.component';
@@ -18,6 +19,7 @@ import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
+    AlertComponent,
     BookComponent,
     BookDetailsComponent,
     LibraryComponent

@@ -9,3 +9,4 @@
 <main>
   <router-outlet></router-outlet>
 </main>
+<app-alert *ngIf="(alertState$ | async).show" [text]="(alertState$ | async).message" [type]="(alertState$ | async).type"></app-alert>
