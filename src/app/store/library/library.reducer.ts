@@ -49,7 +49,8 @@ export function libraryReducer(state = initialState, action: LibraryActions.Libr
 
       return {
         ...state,
-        books: booksCopy
+        books: booksCopy,
+        bookToEdit: action.payload
       }
       break;
     }

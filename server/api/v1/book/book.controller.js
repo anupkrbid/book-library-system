@@ -68,7 +68,7 @@ exports.putBook = (req, res, next) => {
       const err = new Error('Invalide BookId.');
       err.status = 400;
       return next(err);
-    } else if (bookIdIndex !== bookNameIndex) {
+    } else if (bookIdIndex !== bookNameIndex && bookNameIndex > -1) {
       const err = new Error('Non Unique BookName.');
       err.status = 400;
       return next(err);
